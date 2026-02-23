@@ -1,0 +1,16 @@
+
+import java.util.*;
+
+public class Q6SwapUsingThirdVariable {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt(), b = sc.nextInt();
+
+        int temp = a;
+        a = b;
+        b = temp;
+
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+    }
+}
