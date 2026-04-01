@@ -1,0 +1,66 @@
+import java.util.*;
+
+public class spiral {
+
+    public static List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> ans = new ArrayList<>();
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int top = 0, bottom = m - 1;
+        int left = 0, right = n - 1;
+
+        while (top <= bottom && left <= right) {
+
+            for (int i = left; i <= right; i++) {
+                ans.add(matrix[top][i]);
+            }
+            top++;
+
+            for (int i = top; i <= bottom; i++) {
+                ans.add(matrix[i][right]);
+            }
+            right--;
+
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) {
+                    ans.add(matrix[bottom][i]);
+                }
+                bottom--;
+            }
+
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    ans.add(matrix[i][left]);
+                }
+                left++;
+            }
+        }
+
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        
+        int m = sc.nextInt();
+        int n = sc.nextInt();
+
+        int[][] matrix = new int[m][n];
+
+        // 🔹 Input matrix elements
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        // 🔹 Call function
+        List<Integer> result = spiralOrder(matrix);
+
+        // 🔹 Print output
+        System.out.println(result);
+    }
+}
